@@ -1,5 +1,6 @@
 ﻿namespace Challenges.Challenge.Y2023.Day04;
 
+[ChallengeName("Day 4: Scratchcards ")]
 public class Day04: IChallenge
 {
     public async Task<object> TaskPartOne(string input)
