@@ -1,10 +1,11 @@
-﻿namespace Challenges.Util;
-
-internal class ChallengeName : Attribute
+﻿namespace Challenges.Util
 {
-    public readonly string? Name;
-    public ChallengeName(string? name)
+    internal class ChallengeName : Attribute
     {
-        this.Name = name;
+        public readonly string? Name;
+        public ChallengeName(string? name)
+        {
+            this.Name = name;
+        }
     }
 }

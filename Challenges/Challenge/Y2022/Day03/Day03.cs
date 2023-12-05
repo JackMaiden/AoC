@@ -1,65 +1,66 @@
-﻿namespace Challenges.Challenge.Y2022.Day03;
-
-[ChallengeName("Day 3: Rucksack Reorganization")]
-public class Day03 : IChallenge
+﻿namespace Challenges.Challenge.Y2022.Day03
 {
-    public async Task<object> TaskPartOne(string input) => await BackpackSearcher(input);
-
-    public async Task<object> TaskPartTwo(string input) => await GroupSearcher(input);
-
-    public async Task<object> BackpackSearcher(string input)
+    [ChallengeName("Day 3: Rucksack Reorganization")]
+    public class Day03 : IChallenge
     {
-        var backpacks = input.Split("\r\n").ToList();
-        var sumPriorities = 0;
+        public async Task<object> TaskPartOne(string input) => await BackpackSearcher(input);
 
-        foreach (var backpack in backpacks)
+        public async Task<object> TaskPartTwo(string input) => await GroupSearcher(input);
+
+        public async Task<object> BackpackSearcher(string input)
         {
-            var compartmentsSize = backpack.Length/2;
+            var backpacks = input.Split("\r\n").ToList();
+            var sumPriorities = 0;
 
-            var compartment1 = backpack[..compartmentsSize].ToCharArray();
-            var compartment2 = backpack[compartmentsSize..].ToCharArray();
-
-            foreach (var item in compartment1.GroupBy(x => x).Select(g => g.First()).ToList())
+            foreach (var backpack in backpacks)
             {
-                if (compartment2.Contains(item))
+                var compartmentsSize = backpack.Length/2;
+
+                var compartment1 = backpack[..compartmentsSize].ToCharArray();
+                var compartment2 = backpack[compartmentsSize..].ToCharArray();
+
+                foreach (var item in compartment1.GroupBy(x => x).Select(g => g.First()).ToList())
                 {
-                    sumPriorities += _priorities[item];
+                    if (compartment2.Contains(item))
+                    {
+                        sumPriorities += _priorities[item];
+                    }
                 }
             }
+            return sumPriorities;
         }
-        return sumPriorities;
-    }
 
-    public async Task<object> GroupSearcher(string input)
-    {
-        var backpacks = input.Split("\r\n").ToList();
-        var sumPriorities = 0;
-
-        for (var i = 0; i < backpacks.Count; i = i + 3)
+        public async Task<object> GroupSearcher(string input)
         {
-            foreach (var item in backpacks[i].ToCharArray().GroupBy(x => x).Select(g => g.First()).ToList())
+            var backpacks = input.Split("\r\n").ToList();
+            var sumPriorities = 0;
+
+            for (var i = 0; i < backpacks.Count; i = i + 3)
             {
-                if (backpacks[i+1].ToCharArray().Contains(item)&& backpacks[i + 2].ToCharArray().Contains(item))
+                foreach (var item in backpacks[i].ToCharArray().GroupBy(x => x).Select(g => g.First()).ToList())
                 {
-                    sumPriorities += _priorities[item];
+                    if (backpacks[i+1].ToCharArray().Contains(item)&& backpacks[i + 2].ToCharArray().Contains(item))
+                    {
+                        sumPriorities += _priorities[item];
+                    }
                 }
             }
+            return sumPriorities;
         }
-        return sumPriorities;
-    }
 
-    readonly Dictionary<char, int> _priorities = new Dictionary<char, int>();
-    public Day03()
-    {
-        char a;
-        int i;
-        for (a = 'a', i = 1; a <= 'z'; a++, i++)
+        readonly Dictionary<char, int> _priorities = new Dictionary<char, int>();
+        public Day03()
         {
-            _priorities.Add(a, i);
-        }
-        for (a = 'A'; a <= 'Z'; a++, i++)
-        {
-            _priorities.Add(a, i);
+            char a;
+            int i;
+            for (a = 'a', i = 1; a <= 'z'; a++, i++)
+            {
+                _priorities.Add(a, i);
+            }
+            for (a = 'A'; a <= 'Z'; a++, i++)
+            {
+                _priorities.Add(a, i);
+            }
         }
     }
 }
