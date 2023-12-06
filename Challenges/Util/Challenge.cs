@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace Challenges.Util
 {
@@ -13,11 +14,16 @@ namespace Challenges.Util
     {
         public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             var partOneResult = await challenge.TaskPartOne(input);
             var partTwoResult = await challenge.TaskPartTwo(input);
+            stopWatch.Stop();
+
+            var duration = stopWatch.Elapsed;
             var name = challenge.GetName() ?? "Unknown";
 
-            var result = new Result(name, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
+            var result = new Result(name, duration, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
             return result;
         }
 
