@@ -7,7 +7,6 @@ public class Day05: IChallenge
 {
     public async Task<object> TaskPartOne(string input) => Day5Solver(input, longs => longs.Select(i => new Range(i, i)));
     
-
     public async Task<object> TaskPartTwo(string input) => Day5Solver(input, longs => longs.Chunk(2).Select(i => new Range(i[0], i[0] + i[1] - 1)));
 
     private long Day5Solver(string input, Func<long[], IEnumerable<Range>> parseRangesFunc)
@@ -26,14 +25,9 @@ public class Day05: IChallenge
     private long[] ParseSeeds(string input) =>
         Matches(input, @"\d+").Select(match => long.Parse(match.Value)).ToArray();
 
-    private Map[] ParseMaps(string input)
-    {
-
-        var mapBodies = input.GetLines().Skip(1);
-
-        return mapBodies
+    private Map[] ParseMaps(string input) =>
+        input.GetLines().Skip(1) //Skip the header row
             .Select(GenerateMap).ToArray();
-    }
 
     private Map GenerateMap(string? input)
     {
@@ -66,7 +60,7 @@ public class Day05: IChallenge
                 {
                      queue.Enqueue(new Range(range.Start, lookup.Src.Start - 1));
                      queue.Enqueue(new Range(lookup.Src.Start, range.End));
-                    found = true;
+                     found = true;
                 }
                 else if (range.Start < lookup.Src.End && lookup.Src.End <= range.End)
                 {
