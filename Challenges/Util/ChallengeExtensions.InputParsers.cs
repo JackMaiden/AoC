@@ -1,4 +1,6 @@
-﻿namespace Challenges.Util;
+﻿using System.Linq;
+
+namespace Challenges.Util;
 public partial class ChallengeExtensions
 {
     private static readonly string[] NewLineSeparator = { "\r\n", "\r", "\n" };
@@ -18,4 +20,8 @@ public partial class ChallengeExtensions
         separator: DoubleNewLineSeparator,
         StringSplitOptions.None
     );
+
+    public static int[] GetIntArr(this string input) => NumberRegex().Matches(input).Select(match => int.Parse(match.Value)).ToArray();
+
+    public static long[] GetLongArr(this string input) => NumberRegex().Matches(input).Select(match => long.Parse(match.Value)).ToArray();
 }

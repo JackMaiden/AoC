@@ -83,7 +83,7 @@ namespace Challenges
                     using (var reader = new StreamReader(stream))
                         input = await reader.ReadToEndAsync();
 
-            Result result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
+            var result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
 
             await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), new[] { JsonConvert.SerializeObject(result, Formatting.Indented) ?? "" });
 

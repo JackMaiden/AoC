@@ -2,7 +2,7 @@
 {
     public class Result(
         string challengeName,
-        TimeSpan? duration = null,
+        string duration = "",
         object? examplePartOne = null,
         object? examplePartTwo = null,
         object? partOne = null,
@@ -17,6 +17,6 @@
         public object? PartOne { get; set; } = partOne;
         public object? PartTwo { get; set; } = partTwo;
         public string Date { get; set; } = date;
-        public TimeSpan? Duration { get; set; } = duration;
+        public string Duration { get; set; } = duration;
     }
 }

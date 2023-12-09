@@ -9,16 +9,16 @@ public static partial class ChallengeExtensions
     {
         Stopwatch stopWatch = new();
         stopWatch.Start();
-        var examplePartOneResult = await challenge.TaskPartOne(example1);
-        var examplePartTwoResult = await challenge.TaskPartTwo(example2);
-        var partOneResult = await challenge.TaskPartOne(input);
-        var partTwoResult = await challenge.TaskPartTwo(input);
+        var examplePartOneResult = example1 != "" ? await challenge.TaskPartOne(example1) : null;
+        var examplePartTwoResult = example2 != "" ? await challenge.TaskPartTwo(example2) : null;
+        var partOneResult = input != "" ? await challenge.TaskPartOne(input) : null;
+        var partTwoResult = input != "" ? await challenge.TaskPartTwo(input) : null;
         stopWatch.Stop();
 
         var duration = stopWatch.Elapsed;
         var name = challenge.GetName();
 
-        var result = new Result(name, duration, examplePartOneResult, examplePartTwoResult, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
+        var result = new Result(name, $"{duration.TotalSeconds:N0}s : {duration.Milliseconds:N0}ms", examplePartOneResult, examplePartTwoResult, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
         return result;
     }
 
