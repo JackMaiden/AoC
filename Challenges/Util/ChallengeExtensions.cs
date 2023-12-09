@@ -5,28 +5,30 @@ namespace Challenges.Util;
 
 public static partial class ChallengeExtensions
 {
-    public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input, bool partOneOnly = false, object? partOneResult = null)
+    public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input, string example1, string example2)
     {
-        Stopwatch stopWatch = new Stopwatch();
+        Stopwatch stopWatch = new();
         stopWatch.Start();
-        partOneResult ??= await challenge.TaskPartOne(input);
-        var partTwoResult = !partOneOnly ? await challenge.TaskPartTwo(input) : null;
+        var examplePartOneResult = await challenge.TaskPartOne(example1);
+        var examplePartTwoResult = await challenge.TaskPartTwo(example2);
+        var partOneResult = await challenge.TaskPartOne(input);
+        var partTwoResult = await challenge.TaskPartTwo(input);
         stopWatch.Stop();
 
         var duration = stopWatch.Elapsed;
-        var name = challenge.GetName() ?? "Unknown";
+        var name = challenge.GetName();
 
-        var result = new Result(name, duration, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
+        var result = new Result(name, duration, examplePartOneResult, examplePartTwoResult, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
         return result;
     }
 
-    public static string? GetName(this IChallenge challenge)
+    public static string GetName(this IChallenge challenge)
     {
         return (
             challenge
                 .GetType()
                 .GetCustomAttribute(typeof(ChallengeName)) as ChallengeName
-        )?.Name;
+        )?.Name ?? "Unknown";
     }
 
     public static string WorkingDir(int year)

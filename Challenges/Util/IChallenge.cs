@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-
-namespace Challenges.Util;
+﻿namespace Challenges.Util;
 
 public interface IChallenge
 {
