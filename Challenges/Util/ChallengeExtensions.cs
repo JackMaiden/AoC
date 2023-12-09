@@ -3,21 +3,14 @@ using System.Reflection;
 
 namespace Challenges.Util;
 
-public interface IChallenge
+public static partial class ChallengeExtensions
 {
-    public Task<object> TaskPartOne(string input);
-
-    public Task<object> TaskPartTwo(string input);
-}
-
-public static class ChallengeExtensions
-{
-    public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input)
+    public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input, bool partOneOnly = false, object? partOneResult = null)
     {
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
-        var partOneResult = await challenge.TaskPartOne(input);
-        var partTwoResult = await challenge.TaskPartTwo(input);
+        partOneResult ??= await challenge.TaskPartOne(input);
+        var partTwoResult = !partOneOnly ? await challenge.TaskPartTwo(input) : null;
         stopWatch.Stop();
 
         var duration = stopWatch.Elapsed;
@@ -36,16 +29,6 @@ public static class ChallengeExtensions
         )?.Name;
     }
 
-    public static IEnumerable<int?>? GetNumberEnumerableIncNull(this string input) => input.Split(
-        new[] { "\r\n", "\r", "\n" },
-        StringSplitOptions.None
-    ).Select(i => !string.IsNullOrWhiteSpace(i)? (int?) int.Parse(i) : null);
-
-    public static IEnumerable<string?>? GetLines(this string input) => input.Split(
-        new[] { "\r\n", "\r", "\n" },
-        StringSplitOptions.None
-    );
-
     public static string WorkingDir(int year)
     {
         return Path.Combine($"Y{year}");
@@ -60,7 +43,7 @@ public static class ChallengeExtensions
     {
         return WorkingDir(challenge.Year(), challenge.Day());
     }
-        
+
     public static int Year(Type t)
     {
         return int.Parse((t.FullName?.Split('.')[2])?[1..]!);

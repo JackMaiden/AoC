@@ -8,10 +8,16 @@
 
   <ItemGroup>
     <None Remove="Challenge\**\data.input" />
+    <None Remove="Challenge\**\example.input" />
+    <None Remove="Challenge\**\example.input.1" />
+    <None Remove="Challenge\**\example.input.2" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Challenge\**\data.input" />
+    <EmbeddedResource Include="Challenge\**\example.input" />
+    <EmbeddedResource Include="Challenge\**\example.input.1" />
+    <EmbeddedResource Include="Challenge\**\example.input.2" />
   </ItemGroup>
 
   <ItemGroup>
