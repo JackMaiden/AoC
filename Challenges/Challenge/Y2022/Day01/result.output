@@ -1,7 +1,9 @@
 {
   "ChallengeName": "Day 01: Calorie Counting",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 69206,
   "PartTwo": 197400,
   "Date": "2022/01",
-  "Duration": "00:00:00.0131244"
+  "Duration": "0s : 9ms"
 }

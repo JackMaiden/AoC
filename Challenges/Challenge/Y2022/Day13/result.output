@@ -1,7 +1,9 @@
 {
   "ChallengeName": "Day 13: Distress Signal",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 5208,
   "PartTwo": 25792,
   "Date": "2022/13",
-  "Duration": "00:00:00.0257817"
+  "Duration": "0s : 33ms"
 }

@@ -1,5 +1,7 @@
 {
   "ChallengeName": "Day 10: Cathode-Ray Tube",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 14360,
   "PartTwo": [
     "###   ##  #  #  ##  #### ###  #### #### ",
@@ -10,5 +12,5 @@
     "###   ### #  # #  # #### #  # #### #### "
   ],
   "Date": "2022/10",
-  "Duration": "00:00:00.0024659"
+  "Duration": "0s : 1ms"
 }

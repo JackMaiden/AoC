@@ -1,7 +1,9 @@
 {
   "ChallengeName": "Day 9: Rope Bridge",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 5683,
   "PartTwo": 2372,
   "Date": "2022/09",
-  "Duration": "00:00:00.0181715"
+  "Duration": "0s : 15ms"
 }

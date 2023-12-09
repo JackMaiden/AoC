@@ -1,7 +1,9 @@
 {
   "ChallengeName": "Day 11: Monkey in the Middle",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 78960,
   "PartTwo": 14561971968,
   "Date": "2022/11",
-  "Duration": "00:00:00.2561852"
+  "Duration": "0s : 213ms"
 }

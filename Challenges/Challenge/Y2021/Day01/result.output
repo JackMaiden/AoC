@@ -1,7 +1,9 @@
 {
   "ChallengeName": "Day 01: Sonar Sweep",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 1266,
   "PartTwo": 1217,
   "Date": "2021/01",
-  "Duration": "00:00:00.0148099"
+  "Duration": "0s : 7ms"
 }

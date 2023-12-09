@@ -1,7 +1,9 @@
 {
-  "ChallengeName": "Unknown",
+  "ChallengeName": "Day 7: Camel Cards",
+  "ExamplePartOne": null,
+  "ExamplePartTwo": null,
   "PartOne": 250254244,
   "PartTwo": 250087440,
   "Date": "2023/07",
-  "Duration": "00:00:00.3670848"
+  "Duration": "0s : 365ms"
 }
