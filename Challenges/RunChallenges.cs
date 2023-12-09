@@ -48,42 +48,33 @@ namespace Challenges
             var challengePath = Path.Combine(_environmentPath, "..\\Challenges", "Challenge", challenge.WorkingDir());
 
             var exampleInput = "";
+            var exampleInput1 = "";
+            var exampleInput2 = "";
             await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input"))
                 if (stream is not null)
                     using (var reader = new StreamReader(stream))
                         exampleInput = await reader.ReadToEndAsync();
 
-            if (!string.IsNullOrEmpty(exampleInput))
-            {
-                var exampleResult = await challenge.CompleteChallenge(exampleInput);
-                await WriteAllLinesAsync(Path.Combine(challengePath, "example.output"), new[] { JsonConvert.SerializeObject(exampleResult, Formatting.Indented) ?? "" });
-            }
-            else
+            if (string.IsNullOrEmpty(exampleInput))
             {
                 exampleInput = "";
                 await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input.1"))
                     if (stream is not null)
                         using (var reader = new StreamReader(stream))
-                            exampleInput = await reader.ReadToEndAsync();
+                            exampleInput1 = await reader.ReadToEndAsync();
 
                 if (!string.IsNullOrEmpty(exampleInput))
                 {
-                    var exampleResult = await challenge.CompleteChallenge(exampleInput, true);
-
-                    exampleInput = "";
-                    await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input.2"))
-                        if (stream is not null)
-                            using (var reader = new StreamReader(stream))
-                                exampleInput = await reader.ReadToEndAsync();
-
-                    if (!string.IsNullOrEmpty(exampleInput))
-                    {
-                        exampleResult = await challenge.CompleteChallenge(exampleInput, false, exampleResult.PartOne);
-                    }
-
-                    await WriteAllLinesAsync(Path.Combine(challengePath, "example.output"),
-                        new[] { JsonConvert.SerializeObject(exampleResult, Formatting.Indented) ?? "" });
+                    await using var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input.2");
+                    if (stream is not null)
+                        using (var reader = new StreamReader(stream))
+                            exampleInput2 = await reader.ReadToEndAsync();
                 }
+            }
+            else
+            {
+                exampleInput1 = exampleInput;
+                exampleInput2 = exampleInput;
             }
 
             var input = "";
@@ -92,12 +83,8 @@ namespace Challenges
                     using (var reader = new StreamReader(stream))
                         input = await reader.ReadToEndAsync();
 
-            Result result;
-            if (!string.IsNullOrEmpty(input))
-                result = await challenge.CompleteChallenge(input);
-            else
-                result = new Result(challenge.GetName(), new TimeSpan(0, 0, 0), null, null,
-                    $"{challenge.Year()}/{challenge.Day():00}");
+            Result result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
+
             await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), new[] { JsonConvert.SerializeObject(result, Formatting.Indented) ?? "" });
 
             return result;
