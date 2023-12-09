@@ -18,7 +18,7 @@ namespace Challenges
             startDateTime ??= DateTime.Today;
             if (startDateTime.Value.Month != 12 || startDateTime.Value.Day > 25)
                 return new Result[] { "You can only play this between 1-25th December" };
-            if (startDateTime.Value.Year < 2021 || startDateTime.Value > DateTime.Today)
+            if (startDateTime.Value.Year < 2015 || startDateTime.Value > DateTime.Today)
                 return new Result[] { "This project does not support this challenge" };
 
             var implementedChallengeTypes = Assembly.GetExecutingAssembly()!.GetTypes()
@@ -45,15 +45,59 @@ namespace Challenges
         {
             if (challenge == null) return "Challenge Not Implemented Yet";
 
-            string input;
+            var challengePath = Path.Combine(_environmentPath, "..\\Challenges", "Challenge", challenge.WorkingDir());
+
+            var exampleInput = "";
+            await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input"))
+                if (stream is not null)
+                    using (var reader = new StreamReader(stream))
+                        exampleInput = await reader.ReadToEndAsync();
+
+            if (!string.IsNullOrEmpty(exampleInput))
+            {
+                var exampleResult = await challenge.CompleteChallenge(exampleInput);
+                await WriteAllLinesAsync(Path.Combine(challengePath, "example.output"), new[] { JsonConvert.SerializeObject(exampleResult, Formatting.Indented) ?? "" });
+            }
+            else
+            {
+                exampleInput = "";
+                await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input.1"))
+                    if (stream is not null)
+                        using (var reader = new StreamReader(stream))
+                            exampleInput = await reader.ReadToEndAsync();
+
+                if (!string.IsNullOrEmpty(exampleInput))
+                {
+                    var exampleResult = await challenge.CompleteChallenge(exampleInput, true);
+
+                    exampleInput = "";
+                    await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.example.input.2"))
+                        if (stream is not null)
+                            using (var reader = new StreamReader(stream))
+                                exampleInput = await reader.ReadToEndAsync();
+
+                    if (!string.IsNullOrEmpty(exampleInput))
+                    {
+                        exampleResult = await challenge.CompleteChallenge(exampleInput, false, exampleResult.PartOne);
+                    }
+
+                    await WriteAllLinesAsync(Path.Combine(challengePath, "example.output"),
+                        new[] { JsonConvert.SerializeObject(exampleResult, Formatting.Indented) ?? "" });
+                }
+            }
+
+            var input = "";
             await using (var stream = typeof(RunChallenges).Assembly.GetManifestResourceStream($"Challenges.Challenge.{challenge.WorkingDir().Replace("\\", ".")}.data.input"))
-            using (var reader = new StreamReader(stream))
-                input = await reader.ReadToEndAsync();
+                if(stream is not null)
+                    using (var reader = new StreamReader(stream))
+                        input = await reader.ReadToEndAsync();
 
-            var basePath = _environmentPath;
-            var challengePath = Path.Combine(basePath, "..\\Challenges", "Challenge", challenge.WorkingDir());
-
-            var result = await challenge.CompleteChallenge(input);
+            Result result;
+            if (!string.IsNullOrEmpty(input))
+                result = await challenge.CompleteChallenge(input);
+            else
+                result = new Result(challenge.GetName(), new TimeSpan(0, 0, 0), null, null,
+                    $"{challenge.Year()}/{challenge.Day():00}");
             await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), new[] { JsonConvert.SerializeObject(result, Formatting.Indented) ?? "" });
 
             return result;
