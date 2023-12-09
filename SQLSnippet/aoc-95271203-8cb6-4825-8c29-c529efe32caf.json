@@ -1,0 +1,16 @@
+{
+  "id": "95271203-8cb6-4825-8c29-c529efe32caf",
+  "prefix": "aoc",
+  "description": "AdventOfCode",
+  "body": "\r\nIF NOT EXISTS (\r\n                  SELECT    *\r\n                  FROM      [INFORMATION_SCHEMA].[SCHEMATA] AS [S]\r\n                  WHERE     [S].[SCHEMA_NAME] = 'AoC$year$'\r\n              )\r\nBEGIN\r\n    EXEC [sys].[sp_executesql] N'CREATE SCHEMA AoC$year$';\r\nEND;\r\nDROP TABLE IF EXISTS [AoC$year$].[AoC_Dec$day$];\r\nCREATE TABLE [AoC$year$].[AoC_Dec$day$]\r\n(\r\n    [ID] int IDENTITY,\r\n    [input] nvarchar(max) NULL\r\n);\r\nGO\r\nDROP VIEW IF EXISTS [AoC$year$].[Dec$day$Bulk];\r\nGO\r\nCREATE VIEW [AoC$year$].[Dec$day$Bulk]\r\nAS\r\nSELECT  [input]\r\nFROM    [AoC$year$].[AoC_Dec$day$];\r\nGO\r\nDECLARE @Path nvarchar(max) = 'D:\\Source Control\\GitHub\\AoCSharp'\r\nDECLARE @BulkSQL nvarchar(1000);\r\nSET @BulkSQL = N'BULK INSERT AoC$year$.Dec$day$Bulk\r\nFROM '''+@path+'\\AdventOfCodeSharp\\Challenge\\Y2022\\Day$DATE(dd)$\\data.input''\r\nWITH (\r\n\t\t FIELDTERMINATOR = '','',\r\n         ROWTERMINATOR = ''' + CHAR(13) + CHAR(10) + N'''\r\n     );';\r\nEXEC [sys].[sp_executesql] @BulkSQL;\r\n\r\nSELECT * FROM [AoC$year$].[AoC_Dec$day$] AS [ACD]",
+  "placeholders": [
+    {
+      "name": "day",
+      "defaultValue": "$DATE(dd)$"
+    },
+    {
+      "name": "year",
+      "defaultValue": "$DATE(yy)$"
+    }
+  ]
+}
