@@ -3,8 +3,6 @@ using System.Numerics;
 
 namespace Challenges.Challenge.Y2023.Day10;
 
-using Map = Dictionary<Complex, char>;
-
 [ChallengeName("Day 10: Pipe Maze")]
 public class Day10 : IChallenge
 {
