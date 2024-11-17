@@ -29,6 +29,7 @@ public class Day12 : IChallenge
                 possibilities.Add(i, pos.ToArray());
             }
         }
+        return usage.Count;
     }
 
 
