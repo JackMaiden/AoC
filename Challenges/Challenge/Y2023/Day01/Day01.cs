@@ -62,7 +62,7 @@
                 {
                     var s2 = line.Substring(minIndex);
 
-                    var digit = digits.Where(s => s2.StartsWith(s)).FirstOrDefault();
+                    var digit = digits.FirstOrDefault(s => s2.StartsWith(s));
 
                     first = digit switch
                     {
@@ -86,7 +86,7 @@
                 {
                     var s2 = line.Substring(maxIndex);
 
-                    var digit = digits.Where(s => s2.StartsWith(s)).FirstOrDefault();
+                    var digit = digits.FirstOrDefault(s => s2.StartsWith(s));
 
                     last = digit switch
                     {

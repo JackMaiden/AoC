@@ -1,3 +1,9 @@
+USE AoC;
+
+SET NOCOUNT ON
+
+
+
 IF NOT EXISTS (
                   SELECT    *
                   FROM      [INFORMATION_SCHEMA].[SCHEMATA] AS [S]
@@ -20,15 +26,17 @@ AS
 SELECT  [input]
 FROM    [AoC23].[AoC_Dec01];
 GO
-DECLARE @Path nvarchar(MAX) = N'D:\Source Control\GitHub\AoC';
+DECLARE @Path nvarchar(MAX) = N'K:\Development\AoC';
 DECLARE @BulkSQL nvarchar(1000);
 SET @BulkSQL = N'BULK INSERT AoC23.Dec01Bulk
-FROM ''' + @Path + N'\AdventOfCodeSharp\Challenge\Y2023\Day01\data.input''
+FROM ''' + @Path + N'\Challenges\Challenge\Y2023\Day01\data.input''
 WITH (
 		 FIELDTERMINATOR = '','',
          ROWTERMINATOR = ''' + CHAR(13) + CHAR(10) + N'''
      );';
 EXEC [sys].[sp_executesql] @BulkSQL;
+
+DECLARE @Start datetime2(7) = GETDATE()
 
 SELECT  *
 FROM    [AoC23].[AoC_Dec01] AS [ACD];
@@ -185,3 +193,4 @@ SELECT  SUM([CT].[calibration])
 FROM    @CalibTable AS [CT];
 
 
+SELECT DATEDIFF(MILLISECOND, @Start, GETDATE())
