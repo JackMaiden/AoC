@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 2: I Was Told There Would Be No Math",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 1598415,
-  "PartTwo": null,
-  "Date": "2015/02",
-  "Duration": ""
+  "PartTwo": 3812909,
+  "Date": "2015/02"
 }

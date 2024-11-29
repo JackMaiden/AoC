@@ -3,29 +3,22 @@
 [ChallengeName("Day 2: I Was Told There Would Be No Math")]
 public class Day02 : IChallenge
 {
-    public async Task<object?> TaskPartOne(string input) => await Day02Part1(input.GetLines());
+    public async Task<object?> TaskPartOne(string input) => (await ParseBoxes(input.GetLines())).Sum(s => s.Paper);
 
-    public async Task<object?> TaskPartTwo(string input) => null;
+    public async Task<object?> TaskPartTwo(string input) => (await ParseBoxes(input.GetLines())).Sum(s => s.Ribon);
 
-    private record struct Box(int L, int W, int H)
+    private readonly record struct Box(int L, int W, int H)
     {
-        public int W { get; set; } = W;
-        public int L { get; set; } = L;
-        public int H { get; set; } = H;
-        public readonly IReadOnlyCollection<int> Areas = [L*W, W*H, H*L];
-        public int Paper => Areas.Sum() * 2 + Areas.Min();
-    }
-
-    private async Task<int> Day02Part1(IEnumerable<string> input)
-    {
-        var boxes = input.Select(s =>
-        {
-            var splits = s.Split("x");
-            return new Box(int.Parse(splits[0]), int.Parse(splits[1]), int.Parse(splits[2]));
-        });
+        private readonly int[] _areas = [L*W, W*H, H*L];
+        public int Paper => _areas.Sum() * 2 + _areas.Min();
         
-        return boxes.Sum(s => s.Paper);
+        private readonly int[] _perimeters = [2 * (L + W), 2 * (W + H), 2 * (H + L) ];
+        public int Ribon => (L * W * H) + _perimeters.Min();
     }
-    
 
+    private async Task<IEnumerable<Box>> ParseBoxes(IEnumerable<string> input) => input.Select(s =>
+    {
+        var splits = s.Split("x");
+        return new Box(int.Parse(splits[0]), int.Parse(splits[1]), int.Parse(splits[2]));
+    });
 }

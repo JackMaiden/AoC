@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 1: Not Quite Lisp",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 232,
   "PartTwo": 1782,
-  "Date": "2015/01",
-  "Duration": ""
+  "Date": "2015/01"
 }
