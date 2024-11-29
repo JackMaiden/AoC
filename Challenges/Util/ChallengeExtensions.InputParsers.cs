@@ -9,12 +9,12 @@ public partial class ChallengeExtensions
         StringSplitOptions.None
     ).Select(i => !string.IsNullOrWhiteSpace(i) ? (int?)int.Parse(i) : null);
 
-    public static IEnumerable<string?> GetLines(this string input) => input.Split(
+    public static IEnumerable<string> GetLines(this string input) => input.Split(
         separator: NewLineSeparator,
         StringSplitOptions.None
     );
 
-    public static IEnumerable<string?> GetBlocks(this string input) => input.Split(
+    public static IEnumerable<string> GetBlocks(this string input) => input.Split(
         separator: DoubleNewLineSeparator,
         StringSplitOptions.None
     );
