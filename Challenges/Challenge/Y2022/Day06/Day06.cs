@@ -11,7 +11,7 @@
         //start of packet marker is a 4 char unique string
         //start of Message marker is a 14 char unique string
 
-        private async Task<object> StartOfXMarker(string input, int distinct)
+        private async Task<object?> StartOfXMarker(string input, int distinct)
         {
             for (var i = 0; i < input.Length - distinct; i++)
             {

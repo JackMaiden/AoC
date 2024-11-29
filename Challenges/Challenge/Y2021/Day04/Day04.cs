@@ -7,7 +7,7 @@
 
         public async Task<object?> TaskPartTwo(string input) => await Bingo(input, false);
 
-        public async Task<object> Bingo(string input, bool best)
+        private async Task<object?> Bingo(string input, bool best)
         {
             //lets split into sub blocks
             var bingoInput = input.Split("\r\n\r\n").ToList();
@@ -22,20 +22,20 @@
                     a.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(a => new Cell(int.Parse(a)))
                         .ToArray()).ToArray())).ToList();
 
-            BingoBoard lastWon = null;
+            BingoBoard? lastWon = null;
 
             foreach (var bingoCall in bingoOrderList)
             {
                 foreach (var bingoBoard in bingoBoards.ToArray())
                 {
                     if (!bingoBoard.BingoCall(bingoCall)) continue;
-                    if(best) return bingoBoard.BingoScore;
+                    if(best) return bingoBoard?.BingoScore;
                     bingoBoards.Remove(bingoBoard);
                     lastWon = bingoBoard;
                 }
             }
 
-            return lastWon.BingoScore;
+            return lastWon?.BingoScore;
         }
 
         public struct Cell

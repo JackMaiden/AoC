@@ -29,7 +29,7 @@ public class Day05: IChallenge
         input.GetLines().Skip(1) //Skip the header row
             .Select(GenerateMap).ToArray();
 
-    private Map GenerateMap(string? input)
+    private Map GenerateMap(string input)
     {
         var mapRangeArray = input.Split(" ").Select(long.Parse).ToArray();
 

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Numerics;
 
 namespace Challenges.Challenge.Y2023.Day10;
@@ -30,13 +31,13 @@ public class Day10 : IChallenge
         return map.Keys.Count(pos => IsInside(map, pos));
     }
 
-    bool IsInside(Dictionary<Coord, char> map, Coord position)
+    bool IsInside(Dictionary<Coord, char> map, Coord? position)
     {
-        var cell = map[position];
+        var cell = map[position!];
         if (cell != '.') return false;
 
         var inside = false;
-        position = position with{X = position.X -1};
+        position = position! with{X = position.X -1};
         while (map.ContainsKey(position))
         {
             if ("SJL|".Contains(map[position]))
@@ -50,7 +51,7 @@ public class Day10 : IChallenge
 
     Dictionary<Coord, int> GetLoop(char[][] grid)
     {
-        Coord startCoord = null;
+        Coord? startCoord = null;
         for (var y = 0; y < grid.Length; y++)
         {
             if (!grid[y].Contains('S')) continue;
@@ -67,7 +68,7 @@ public class Day10 : IChallenge
 
         List<Coord> moves = new();
         List<Coord> previousMoves = new();
-        moves.Add(startCoord);
+        moves.Add(startCoord!);
 
         int i = 0;
 
@@ -89,7 +90,7 @@ public class Day10 : IChallenge
         return steps;
     }
 
-    List<Coord> getPosNextMoves(char[][] grid, Coord pos, List<Coord> previousMoves)
+    private List<Coord> getPosNextMoves(char[][] grid, Coord? pos, List<Coord> previousMoves)
     {
         List<Coord> nextMoves = new();
 
@@ -98,6 +99,7 @@ public class Day10 : IChallenge
         bool canTravelWest = false;
         bool canTravelEast = false;
 
+        Debug.Assert(pos != null, nameof(pos) + " != null");
         var tube = grid[pos.Y][pos.X];
 
         switch (tube)

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Challenges.Challenge.Y2021.Day01
 {
     //Invoked Implicitly
@@ -21,6 +23,7 @@ namespace Challenges.Challenge.Y2021.Day01
 
         private async Task<object> DepthIncreaseGroup(IEnumerable<int>? numbers) // Group values in three then count how many groups increased from previous
         {
+            Debug.Assert(numbers != null, nameof(numbers) + " != null");
             var groups = numbers.Zip(numbers.Skip(1), numbers.Skip(2)).Select(sequence => sequence.First + sequence.Second + sequence.Third);
 
             return await DepthIncrease(groups);

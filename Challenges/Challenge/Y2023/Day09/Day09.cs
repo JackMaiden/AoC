@@ -48,7 +48,6 @@ public class Day09 : IChallenge
             }
 
             return sequence;
-            break;
         }
     }
     [Obsolete]

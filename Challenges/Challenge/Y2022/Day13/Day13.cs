@@ -34,7 +34,7 @@ namespace Challenges.Challenge.Y2022.Day13
                 var arrayA = nodeA as JsonArray ?? new JsonArray((int)nodeA);
                 var arrayB = nodeB as JsonArray ?? new JsonArray((int)nodeB);
                 return Enumerable.Zip(arrayA, arrayB)
-                    .Select(p => Compare(p.First, p.Second))
+                    .Select(p => Compare(p.First!, p.Second!))
                     .FirstOrDefault(c => c != 0, arrayA.Count - arrayB.Count);
             }
         }

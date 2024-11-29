@@ -1,4 +1,6 @@
-﻿namespace Challenges.Challenge.Y2023.Day07;
+﻿using System.Diagnostics;
+
+namespace Challenges.Challenge.Y2023.Day07;
 
 [ChallengeName("Day 7: Camel Cards")]
 public class Day07 : IChallenge
@@ -30,9 +32,9 @@ public class Day07 : IChallenge
 
     private record class Hand(CardType[] cards, int bid) : IComparable<Hand>, IComparable
     {
-        public IEnumerable<HandCount> Groups => cards.GroupBy(s => s).Select(s => new HandCount(s.Key, s.Count())).OrderByDescending(x => x.count);
+        public IEnumerable<HandCount>? Groups => cards.GroupBy(s => s).Select(s => new HandCount(s.Key, s.Count())).OrderByDescending(x => x.count);
 
-        public IEnumerable<HandCount> JokerGroups = null;
+        public IEnumerable<HandCount>? JokerGroups = null;
 
         public HandType Type ()
         {
@@ -42,15 +44,16 @@ public class Day07 : IChallenge
                 if (JokerGroups == null)
                 {
                     List<Hand> jokerHands = [];
-                    jokerHands.AddRange(Groups.Where(x => x.card != CardType.Joker).Select(jokerHandToCreate => new Hand(cards.Select(x => CardReplacer(x, jokerHandToCreate.card)).ToArray(), bid)));
+                    jokerHands.AddRange(Groups!.Where(x => x.card != CardType.Joker).Select(jokerHandToCreate => new Hand(cards.Select(x => CardReplacer(x, jokerHandToCreate.card)).ToArray(), bid)));
 
-                    JokerGroups = jokerHands.MaxBy(x => x).Groups;
+                    JokerGroups = jokerHands.MaxBy(x => x)!.Groups;
                 }
 
                 group = JokerGroups;
             }
 
-                
+
+            Debug.Assert(group != null, nameof(group) + " != null");
             if (group.Any(x => x.count == 5)) return HandType.FiveOfKind;
             if (group.Any(x => x.count == 4)) return HandType.FourOfKind;
             if (group.Any(x => x.count == 3) && group.Any(x => x.count == 2)) return HandType.FullHouse;

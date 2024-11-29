@@ -66,8 +66,8 @@
         public class Monkey
         {
             public long InspectedItems { get; set; }
-            public Queue<long> CurrentItems { get; set; }
-            public string Operation { get; set; }
+            public Queue<long> CurrentItems { get; set; } = [];
+            public string Operation { get; set; } = string.Empty;
             public int Test { get; set; }
             public int TrueMonkey { get; set; }
             public int FalseMonkey { get; set; }

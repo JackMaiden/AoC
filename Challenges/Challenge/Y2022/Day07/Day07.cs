@@ -82,7 +82,7 @@
                 fileSizes += size;
             }
 
-            public void AddDir(string? dir)
+            public void AddDir(string dir)
             {
                 var newCwd = $"{path}/{dir}" ?? dir;
                 innerDirectories.Add(newCwd);
