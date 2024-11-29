@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 14: Regolith Reservoir",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 873,
   "PartTwo": 24813,
-  "Date": "2022/14",
-  "Duration": ""
+  "Date": "2022/14"
 }

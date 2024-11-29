@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 3: Gear Ratios",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 540212,
   "PartTwo": 87605697,
-  "Date": "2023/03",
-  "Duration": ""
+  "Date": "2023/03"
 }

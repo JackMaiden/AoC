@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 03: Binary Diagnostic",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 3687446,
   "PartTwo": 4406844,
-  "Date": "2021/03",
-  "Duration": ""
+  "Date": "2021/03"
 }

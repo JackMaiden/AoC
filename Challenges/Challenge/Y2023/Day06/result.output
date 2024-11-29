@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 6: Wait For It",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 625968,
   "PartTwo": 43663323,
-  "Date": "2023/06",
-  "Duration": ""
+  "Date": "2023/06"
 }

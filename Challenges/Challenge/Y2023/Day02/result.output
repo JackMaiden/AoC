@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 2: Cube Conundrum",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 1853,
   "PartTwo": 72706,
-  "Date": "2023/02",
-  "Duration": ""
+  "Date": "2023/02"
 }

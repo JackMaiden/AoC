@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 7: No Space Left On Device",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 1444896,
   "PartTwo": 404395,
-  "Date": "2022/07",
-  "Duration": ""
+  "Date": "2022/07"
 }

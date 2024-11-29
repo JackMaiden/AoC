@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 1: Trebuchet?!",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 54630,
   "PartTwo": 54770,
-  "Date": "2023/01",
-  "Duration": ""
+  "Date": "2023/01"
 }

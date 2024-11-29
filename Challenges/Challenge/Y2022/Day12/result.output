@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 12: Hill Climbing Algorithm",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 423,
   "PartTwo": 416,
-  "Date": "2022/12",
-  "Duration": ""
+  "Date": "2022/12"
 }

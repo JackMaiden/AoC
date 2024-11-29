@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 02: Rock Paper Scissors",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 14163,
   "PartTwo": 12091,
-  "Date": "2022/02",
-  "Duration": ""
+  "Date": "2022/02"
 }

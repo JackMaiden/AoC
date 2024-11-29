@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 4: Scratchcards ",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 15268,
   "PartTwo": 6283755,
-  "Date": "2023/04",
-  "Duration": ""
+  "Date": "2023/04"
 }

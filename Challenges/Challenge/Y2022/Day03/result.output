@@ -1,9 +1,6 @@
 {
   "ChallengeName": "Day 3: Rucksack Reorganization",
-  "ExamplePartOne": null,
-  "ExamplePartTwo": null,
   "PartOne": 7889,
   "PartTwo": 2825,
-  "Date": "2022/03",
-  "Duration": ""
+  "Date": "2022/03"
 }
