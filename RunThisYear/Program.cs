@@ -6,8 +6,7 @@ var execPath = AppDomain.CurrentDomain.BaseDirectory;
 
 var path = Path.Combine(execPath, @"..\..\..\");
 
-var stopWatch = new Stopwatch();
-stopWatch.Start();
+var start = Stopwatch.GetTimestamp();
 
 var runChallenges = new RunChallenges(path);
 
@@ -18,8 +17,6 @@ var json = JsonConvert.SerializeObject(result,
 
 Console.WriteLine(json);
 
-stopWatch.Stop();
-
-var duration = stopWatch.Elapsed;
+var duration = Stopwatch.GetElapsedTime(start);
 
 Console.WriteLine($"Total Duration: {duration.TotalMilliseconds:N0}ms");
