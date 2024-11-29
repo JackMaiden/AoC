@@ -11,7 +11,7 @@
     {
         public static implicit operator Result(string result) => new(result);
 
-        public Result(Result result) : this(result.ChallengeName, string.Empty, result.ExamplePartOne, result.ExamplePartTwo)
+        public Result(Result result) : this(result.ChallengeName, string.Empty, result.ExamplePartOne, result.ExamplePartTwo, result.PartOne, result.PartTwo, result.Date)
         {
         }
 
