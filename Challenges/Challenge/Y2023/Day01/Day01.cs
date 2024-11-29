@@ -4,8 +4,8 @@
     [ChallengeName("Day 1: Trebuchet?!")]
     public class Day01 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await onlyNumbers(input);
-        public async Task<object> TaskPartTwo(string input) => await wordsAndDigits(input);
+        public async Task<object?> TaskPartOne(string input) => await onlyNumbers(input);
+        public async Task<object?> TaskPartTwo(string input) => await wordsAndDigits(input);
 
         public async Task<int> onlyNumbers(string input)
         {
