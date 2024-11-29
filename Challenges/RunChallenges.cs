@@ -79,7 +79,10 @@ namespace Challenges
             var result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
             
             var savedResult = new Result(result);
-            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), [JsonConvert.SerializeObject(savedResult, Formatting.Indented)]);
+            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"),
+            [
+                JsonConvert.SerializeObject(savedResult, new JsonSerializerSettings { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore})
+            ]);
 
             return result;
         }

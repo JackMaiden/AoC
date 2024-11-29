@@ -2,7 +2,7 @@
 {
     public class Result(
         string challengeName,
-        string duration = "",
+        string? duration = null,
         object? examplePartOne = null,
         object? examplePartTwo = null,
         object? partOne = null,
@@ -11,7 +11,7 @@
     {
         public static implicit operator Result(string result) => new(result);
 
-        public Result(Result result) : this(result.ChallengeName, string.Empty, result.ExamplePartOne, result.ExamplePartTwo, result.PartOne, result.PartTwo, result.Date)
+        public Result(Result result) : this(result.ChallengeName, null, result.ExamplePartOne, result.ExamplePartTwo, result.PartOne, result.PartTwo, result.Date)
         {
         }
 

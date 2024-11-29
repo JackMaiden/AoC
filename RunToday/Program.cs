@@ -10,6 +10,7 @@ var _runChallenges = new RunChallenges(path);
 
 var result = await _runChallenges.RunAoCTask(DateTime.Today);
 
-string json = JsonConvert.SerializeObject(result.FirstOrDefault(), Formatting.Indented);
+var json = JsonConvert.SerializeObject(result.FirstOrDefault(),
+    new JsonSerializerSettings { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
 
 Console.WriteLine(json);
