@@ -3,13 +3,13 @@
     [ChallengeName("Day 11: Monkey in the Middle")]
     public class Day11: IChallenge
     {
-        public async Task<object> TaskPartOne(string input)
+        public async Task<object?> TaskPartOne(string input)
         {
             var monkeyDict = ParseMonkey(input);
             return await MonkeyInTheMiddle(monkeyDict, 20, x => x / 3);
         }
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             var monkeyDict = ParseMonkey(input);
 

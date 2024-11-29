@@ -3,9 +3,9 @@
     [ChallengeName("Day 3: Rucksack Reorganization")]
     public class Day03 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await BackpackSearcher(input);
+        public async Task<object?> TaskPartOne(string input) => await BackpackSearcher(input);
 
-        public async Task<object> TaskPartTwo(string input) => await GroupSearcher(input);
+        public async Task<object?> TaskPartTwo(string input) => await GroupSearcher(input);
 
         public async Task<object> BackpackSearcher(string input)
         {

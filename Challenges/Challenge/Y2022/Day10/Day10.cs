@@ -3,9 +3,9 @@
     [ChallengeName("Day 10: Cathode-Ray Tube")]
     public class Day10: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await CPUCycles(input, true);
+        public async Task<object?> TaskPartOne(string input) => await CPUCycles(input, true);
 
-        public async Task<object> TaskPartTwo(string input) => await CPUCycles(input, false);
+        public async Task<object?> TaskPartTwo(string input) => await CPUCycles(input, false);
 
         public async Task<object> CPUCycles(string input, bool sum)
         {

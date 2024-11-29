@@ -4,9 +4,9 @@
     [ChallengeName("Day 3: Gear Ratios")]
     public class Day03: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) =>  PartNumbers(ParseInput(input)).Select(x=>x.Part).Sum();
+        public async Task<object?> TaskPartOne(string input) =>  PartNumbers(ParseInput(input)).Select(x=>x.Part).Sum();
 
-        public async Task<object> TaskPartTwo(string input) => GearRatios(ParseInput(input)).Sum();
+        public async Task<object?> TaskPartTwo(string input) => GearRatios(ParseInput(input)).Sum();
 
 
         public IEnumerable<PartNumber> PartNumbers(char[][] schematic)

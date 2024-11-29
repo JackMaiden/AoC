@@ -3,9 +3,9 @@
     [ChallengeName("Day 4: Camp Cleanup")]
     public class Day04 :IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await FullyOverlappingPairs(input);
+        public async Task<object?> TaskPartOne(string input) => await FullyOverlappingPairs(input);
 
-        public async Task<object> TaskPartTwo(string input) => await OverlappingPairs(input);
+        public async Task<object?> TaskPartTwo(string input) => await OverlappingPairs(input);
 
         public async Task<object> FullyOverlappingPairs(string input)
         {

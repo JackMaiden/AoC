@@ -3,12 +3,12 @@
     [ChallengeName("Day 4: Scratchcards ")]
     public class Day04: IChallenge
     {
-        public async Task<object> TaskPartOne(string input)
+        public async Task<object?> TaskPartOne(string input)
         {
             return GetCardScores(parseInput(input));
         }
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             var cards = parseInput(input).ToList();
 

@@ -3,13 +3,13 @@
     [ChallengeName("Day 7: No Space Left On Device")]
     public class Day07: IChallenge
     {
-        public async Task<object> TaskPartOne(string input)
+        public async Task<object?> TaskPartOne(string input)
         {
             filesystem(input);
             return Directories.Select(x => x.Value.Size()).Where(x => x <= 100000).Sum();
         }
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             filesystem(input);
             var totalDisk = 70000000;

@@ -3,9 +3,9 @@
 [ChallengeName("Day 7: Camel Cards")]
 public class Day07 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => Solve(input, false);
+    public async Task<object?> TaskPartOne(string input) => Solve(input, false);
 
-    public async Task<object> TaskPartTwo(string input) => Solve(input, true);
+    public async Task<object?> TaskPartTwo(string input) => Solve(input, true);
 
 
     private int Solve(string input, bool joker)

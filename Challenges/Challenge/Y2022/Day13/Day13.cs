@@ -5,12 +5,12 @@ namespace Challenges.Challenge.Y2022.Day13
     [ChallengeName("Day 13: Distress Signal")]
     public class Day13 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => GetPackets(input)
+        public async Task<object?> TaskPartOne(string input) => GetPackets(input)
             .Chunk(2)
             .Select((pair, index) => Compare(pair[0], pair[1]) < 0 ? index + 1 : 0)
             .Sum();
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             var divider = GetPackets("[[2]]\r\n[[6]]").ToList();
             var packets = GetPackets(input).Concat(divider).ToList();

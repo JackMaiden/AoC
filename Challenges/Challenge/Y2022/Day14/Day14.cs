@@ -5,12 +5,12 @@ namespace Challenges.Challenge.Y2022.Day14
     [ChallengeName("Day 14: Regolith Reservoir")]
     public class Day14 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input)
+        public async Task<object?> TaskPartOne(string input)
         {
             return new Cave(input, false).SpawnSand();
         }
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             return new Cave(input, true).SpawnSand();
         }

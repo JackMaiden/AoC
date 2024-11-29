@@ -6,9 +6,9 @@ namespace Challenges.Challenge.Y2023.Day10;
 [ChallengeName("Day 10: Pipe Maze")]
 public class Day10 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => GetLoop(input.GetCharGrid()).Values.Max();
+    public async Task<object?> TaskPartOne(string input) => GetLoop(input.GetCharGrid()).Values.Max();
 
-    public async Task<object> TaskPartTwo(string input)
+    public async Task<object?> TaskPartTwo(string input)
     {
         var grid =  input.GetCharGrid();
         var loop = GetLoop(grid);

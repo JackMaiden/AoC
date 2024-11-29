@@ -3,12 +3,12 @@
 [ChallengeName("Day 6: Wait For It")]
 public partial class Day06 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input)
+    public async Task<object?> TaskPartOne(string input)
     {
         return solve(parseAndGetRaces(input));
     }
 
-    public async Task<object> TaskPartTwo(string input)
+    public async Task<object?> TaskPartTwo(string input)
     {
         return solve(parseAndGetRaces(input.Replace(" ", "")));
     }

@@ -4,8 +4,8 @@
     [ChallengeName("Day 01: Calorie Counting")]
     public class Day01 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await ElfCalories(input);
-        public async Task<object> TaskPartTwo(string input) => await ElfCaloriesTop3(input);
+        public async Task<object?> TaskPartOne(string input) => await ElfCalories(input);
+        public async Task<object?> TaskPartTwo(string input) => await ElfCaloriesTop3(input);
 
         [Obsolete]
         public async Task<object> CalculateCalories(IEnumerable<int?> challenge)

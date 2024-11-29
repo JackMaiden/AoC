@@ -4,17 +4,17 @@
     [ChallengeName("Day 2: Cube Conundrum")]
     public class Day02: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await SumValidGames(input.GetLines());
+        public async Task<object?> TaskPartOne(string input) => await SumValidGames(input.GetLines());
 
 
-        public async Task<object> TaskPartTwo(string input) => await SumPowerGames(input.GetLines());
+        public async Task<object?> TaskPartTwo(string input) => await SumPowerGames(input.GetLines());
 
 
         private const int red = 12;
         private const int green = 13;
         private const int blue = 14;
 
-        public async Task<int> SumValidGames(IEnumerable<string> games)
+        private async Task<int> SumValidGames(IEnumerable<string?> games)
         {
             var parsedGames = Game.ParseGames(games);
 
@@ -29,7 +29,7 @@
         }
 
 
-        private async Task<int> SumPowerGames(IEnumerable<string> games)
+        private async Task<int> SumPowerGames(IEnumerable<string?> games)
         {
             return Game.ParseGames(games).Sum(GamePower);
         }

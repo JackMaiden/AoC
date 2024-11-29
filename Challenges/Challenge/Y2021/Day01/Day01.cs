@@ -4,9 +4,9 @@ namespace Challenges.Challenge.Y2021.Day01
     [ChallengeName("Day 01: Sonar Sweep")]
     public class Day01 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await DepthIncrease(GetNumberEnumerable(input));
+        public async Task<object?> TaskPartOne(string input) => await DepthIncrease(GetNumberEnumerable(input));
 
-        public async Task<object> TaskPartTwo(string input) => await DepthIncreaseGroup(GetNumberEnumerable(input));
+        public async Task<object?> TaskPartTwo(string input) => await DepthIncreaseGroup(GetNumberEnumerable(input));
 
         // Count how many values increased compared to the previous
         private async Task<object> DepthIncrease(IEnumerable<int>? numbers)

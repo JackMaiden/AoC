@@ -3,9 +3,9 @@
 [ChallengeName("Day 9: Mirage Maintenance")]
 public class Day09 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => input.GetLines().Select(x => x.GetLongArr()).Select(NextSense).Sum();// Solve(input, s => s.GetLongArr()).Sum();
+    public async Task<object?> TaskPartOne(string input) => input.GetLines().Select(x => x.GetLongArr()).Select(NextSense).Sum();// Solve(input, s => s.GetLongArr()).Sum();
 
-    public async Task<object> TaskPartTwo(string input) => input.GetLines().Select(x => x.GetLongArr().Reverse().ToArray()).Select(NextSense).Sum();//Solve(input, s => s.GetLongArr().Reverse().ToArray()).Sum();
+    public async Task<object?> TaskPartTwo(string input) => input.GetLines().Select(x => x.GetLongArr().Reverse().ToArray()).Select(NextSense).Sum();//Solve(input, s => s.GetLongArr().Reverse().ToArray()).Sum();
 
     [Obsolete]
     IEnumerable<long> Solve(string input, Func<string, long[]> getArr)

@@ -3,9 +3,9 @@
     [ChallengeName("Day 6: Tuning Trouble")]
     public class Day06: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await StartOfXMarker(input,4);
+        public async Task<object?> TaskPartOne(string input) => await StartOfXMarker(input,4);
 
-        public async Task<object> TaskPartTwo(string input) => await StartOfXMarker(input, 14);
+        public async Task<object?> TaskPartTwo(string input) => await StartOfXMarker(input, 14);
 
 
         //start of packet marker is a 4 char unique string

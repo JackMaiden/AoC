@@ -3,12 +3,12 @@
     [ChallengeName("Day 12: Hill Climbing Algorithm")]
     public class Day12: IChallenge
     {
-        public async Task<object> TaskPartOne(string input)
+        public async Task<object?> TaskPartOne(string input)
         {
             return HillClimbingAlgorithm(input).Single(x=> x.Value.elv == Start).Value.dist;
         }
 
-        public async Task<object> TaskPartTwo(string input)
+        public async Task<object?> TaskPartTwo(string input)
         {
             return HillClimbingAlgorithm(input).Select(x=> x.Value).Where(x => GetElevation(x.elv) == LowestElevation).Min(x => x.dist);
         }

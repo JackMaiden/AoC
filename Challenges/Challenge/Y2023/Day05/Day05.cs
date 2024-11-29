@@ -5,9 +5,9 @@ namespace Challenges.Challenge.Y2023.Day05;
 [ChallengeName("Day 5: If You Give A Seed A Fertilizer")]
 public class Day05: IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => Day5Solver(input, longs => longs.Select(i => new Range(i, i)));
+    public async Task<object?> TaskPartOne(string input) => Day5Solver(input, longs => longs.Select(i => new Range(i, i)));
     
-    public async Task<object> TaskPartTwo(string input) => Day5Solver(input, longs => longs.Chunk(2).Select(i => new Range(i[0], i[0] + i[1] - 1)));
+    public async Task<object?> TaskPartTwo(string input) => Day5Solver(input, longs => longs.Chunk(2).Select(i => new Range(i[0], i[0] + i[1] - 1)));
 
     private long Day5Solver(string input, Func<long[], IEnumerable<Range>> parseRangesFunc)
     {

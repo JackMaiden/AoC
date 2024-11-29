@@ -3,8 +3,8 @@
     [ChallengeName("Day 03: Binary Diagnostic")]
     public class Day03: IChallenge
     {
-        public async Task<object> TaskPartOne(string diagnostics) => GetPowerConsumption(GetBinaryEnumerable(diagnostics));
-        public async Task<object> TaskPartTwo(string diagnostics) => GetOxygenLevels(GetBinaryEnumerable(diagnostics));
+        public async Task<object?> TaskPartOne(string diagnostics) => GetPowerConsumption(GetBinaryEnumerable(diagnostics));
+        public async Task<object?> TaskPartTwo(string diagnostics) => GetOxygenLevels(GetBinaryEnumerable(diagnostics));
 
         private object GetPowerConsumption(IEnumerable<string> diagnostics)
         {

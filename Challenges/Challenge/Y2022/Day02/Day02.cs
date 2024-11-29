@@ -3,9 +3,9 @@
     [ChallengeName("Day 02: Rock Paper Scissors")]
     public class Day02: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await RockPaperScissors(input, true);
+        public async Task<object?> TaskPartOne(string input) => await RockPaperScissors(input, true);
 
-        public async Task<object> TaskPartTwo(string input) => await RockPaperScissors(input, false);
+        public async Task<object?> TaskPartTwo(string input) => await RockPaperScissors(input, false);
 
         public async Task<object> RockPaperScissors(string input, bool plan)
         {

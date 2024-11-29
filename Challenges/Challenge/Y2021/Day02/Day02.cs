@@ -3,9 +3,9 @@
     [ChallengeName("Day 02: Dive!")]
     public class Day02 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await GetFinalArea(GetInput(input));
+        public async Task<object?> TaskPartOne(string input) => await GetFinalArea(GetInput(input));
 
-        public async Task<object> TaskPartTwo(string input) => await GetFinalAreaCourse(GetInput(input));
+        public async Task<object?> TaskPartTwo(string input) => await GetFinalAreaCourse(GetInput(input));
 
         private static async Task<object> GetFinalArea(IEnumerable<Input> commands)
         {

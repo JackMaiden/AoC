@@ -5,9 +5,9 @@ namespace Challenges.Challenge.Y2022.Day05
     [ChallengeName("Day 5: Supply Stacks")]
     public class Day05 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await ContainerStacks(input, false);
+        public async Task<object?> TaskPartOne(string input) => await ContainerStacks(input, false);
 
-        public async Task<object> TaskPartTwo(string input) => await ContainerStacks(input, true);
+        public async Task<object?> TaskPartTwo(string input) => await ContainerStacks(input, true);
 
         public async Task<object> ContainerStacks(string input, bool stackMove)
         {

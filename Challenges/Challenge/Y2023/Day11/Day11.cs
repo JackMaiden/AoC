@@ -3,9 +3,9 @@
 [ChallengeName("Day 11: Cosmic Expansion")]
 public class Day11 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => shortestPath(input, 1);
+    public async Task<object?> TaskPartOne(string input) => shortestPath(input, 1);
 
-    public async Task<object> TaskPartTwo(string input) => shortestPath(input, 1000000 - 1);
+    public async Task<object?> TaskPartTwo(string input) => shortestPath(input, 1000000 - 1);
 
     private long shortestPath(string input, int expansion)
     {

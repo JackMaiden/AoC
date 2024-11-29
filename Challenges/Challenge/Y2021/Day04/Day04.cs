@@ -3,9 +3,9 @@
     [ChallengeName("Day 04: Giant Squid")]
     public class Day04: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await Bingo(input, true);
+        public async Task<object?> TaskPartOne(string input) => await Bingo(input, true);
 
-        public async Task<object> TaskPartTwo(string input) => await Bingo(input, false);
+        public async Task<object?> TaskPartTwo(string input) => await Bingo(input, false);
 
         public async Task<object> Bingo(string input, bool best)
         {

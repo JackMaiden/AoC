@@ -3,9 +3,9 @@
 [ChallengeName("Day 8: Haunted Wasteland")]
 public partial class Day08 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => stepsForPeople(input);
+    public async Task<object?> TaskPartOne(string input) => stepsForPeople(input);
 
-    public async Task<object> TaskPartTwo(string input) => stepsForGhosts(input);
+    public async Task<object?> TaskPartTwo(string input) => stepsForGhosts(input);
 
 
     public int stepsForPeople(string input)

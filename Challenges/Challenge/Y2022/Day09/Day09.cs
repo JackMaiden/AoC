@@ -3,9 +3,9 @@
     [ChallengeName("Day 9: Rope Bridge")]
     public class Day09: IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await RopePhysics(input, 1);
+        public async Task<object?> TaskPartOne(string input) => await RopePhysics(input, 1);
 
-        public async Task<object> TaskPartTwo(string input) => await RopePhysics(input, 9);
+        public async Task<object?> TaskPartTwo(string input) => await RopePhysics(input, 9);
 
 
         public async Task<object> RopePhysics(string input, int tailLength)

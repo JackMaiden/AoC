@@ -3,9 +3,9 @@
 [ChallengeName("")]
 public class Day12 : IChallenge
 {
-    public async Task<object> TaskPartOne(string input) => null;
+    public async Task<object?> TaskPartOne(string input) => null;
 
-    public async Task<object> TaskPartTwo(string input) => null;
+    public async Task<object?> TaskPartTwo(string input) => null;
 
     private int PossibleArrangements(string input)
     {

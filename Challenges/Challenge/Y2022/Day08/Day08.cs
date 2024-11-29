@@ -3,10 +3,10 @@
     [ChallengeName("Day 8: Treetop Tree House")]
     public class Day08 : IChallenge
     {
-        public async Task<object> TaskPartOne(string input) => await TreeGrid(input);
+        public async Task<object?> TaskPartOne(string input) => await TreeGrid(input);
 
 
-        public async Task<object> TaskPartTwo(string input) => await TreeHousePositions(input);
+        public async Task<object?> TaskPartTwo(string input) => await TreeHousePositions(input);
 
 
         public async Task<object> TreeGrid(string input)
