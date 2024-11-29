@@ -14,7 +14,7 @@ namespace Challenges
             if (startDateTime.Value.Year < 2015 || startDateTime.Value > DateTime.Today)
                 return ["This project does not support this challenge"];
 
-            var implementedChallengeTypes = Assembly.GetExecutingAssembly()!.GetTypes()
+            var implementedChallengeTypes = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => t.GetTypeInfo().IsClass && typeof(IChallenge).IsAssignableFrom(t))
                 .OrderBy(t => t.FullName)
                 .ToArray();
@@ -22,7 +22,7 @@ namespace Challenges
 
             var results = new List<Result>();
 
-            foreach (var challenge in implementedChallenges.Where(c => ChallengeExtensions.IsChallenge(c.GetType(), startDateTime.Value, endDateTime)))
+            foreach (var challenge in implementedChallenges.Where(c => ChallengeExtensions.IsChallenge(c!.GetType(), startDateTime.Value, endDateTime)))
             {
                 var result = await Process(challenge);
 
@@ -79,7 +79,7 @@ namespace Challenges
             var result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
             
             var savedResult = new Result(result);
-            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), [JsonConvert.SerializeObject(savedResult, Formatting.Indented) ?? ""]);
+            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), [JsonConvert.SerializeObject(savedResult, Formatting.Indented)]);
 
             return result;
         }
