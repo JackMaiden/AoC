@@ -62,9 +62,9 @@
 &#xD;
 [ChallengeName("")]&#xD;
 public class $CLASS$ : IChallenge {&#xD;
-    public async Task&lt;object&gt; TaskPartOne(string input) =&gt; null;&#xD;
+    public async Task&lt;object?&gt; TaskPartOne(string input) =&gt; null;&#xD;
 &#xD;
-    public async Task&lt;object&gt; TaskPartTwo(string input) =&gt; null;&#xD;
+    public async Task&lt;object?&gt; TaskPartTwo(string input) =&gt; null;&#xD;
 &#xD;
 $END$&#xD;
 }</s:String>
