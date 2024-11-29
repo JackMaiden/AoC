@@ -7,18 +7,17 @@ public static partial class ChallengeExtensions
 {
     public static async Task<Result> CompleteChallenge(this IChallenge challenge, string input, string example1, string example2)
     {
-        Stopwatch stopWatch = new();
-        stopWatch.Start();
+        var start = Stopwatch.GetTimestamp();
         var examplePartOneResult = example1 != "" ? await challenge.TaskPartOne(example1) : null;
         var examplePartTwoResult = example2 != "" ? await challenge.TaskPartTwo(example2) : null;
         var partOneResult = input != "" ? await challenge.TaskPartOne(input) : null;
         var partTwoResult = input != "" ? await challenge.TaskPartTwo(input) : null;
-        stopWatch.Stop();
-
-        var duration = stopWatch.Elapsed;
+        
         var name = challenge.GetName();
 
-        var result = new Result(name, $"{duration.TotalSeconds:N0}s : {duration.Milliseconds:N0}ms", examplePartOneResult, examplePartTwoResult, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
+        var delta = Stopwatch.GetElapsedTime(start);
+        
+        var result = new Result(name, $"{delta.TotalSeconds:N0}s : {delta.Milliseconds:N0}ms", examplePartOneResult, examplePartTwoResult, partOneResult, partTwoResult, $"{Year(challenge)}/{Day(challenge):00}");
         return result;
     }
 

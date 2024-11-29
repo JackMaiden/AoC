@@ -1,7 +1,6 @@
 ﻿
 using Challenges;
 using Newtonsoft.Json;
-using System.Security.Principal;
 
 var execPath = AppDomain.CurrentDomain.BaseDirectory;
 

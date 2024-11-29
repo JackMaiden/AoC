@@ -4,22 +4,15 @@ using static System.IO.File;
 
 namespace Challenges
 {
-    public class RunChallenges
+    public class RunChallenges(string environmentPath)
     {
-        private readonly string _environmentPath;
-
-        public RunChallenges(string environmentPath)
-        {
-            _environmentPath = environmentPath;
-        }
-
         public async Task<IEnumerable<Result>> RunAoCTask(DateTime? startDateTime, DateTime? endDateTime = null)
         {
             startDateTime ??= DateTime.Today;
             if (startDateTime.Value.Month != 12 || startDateTime.Value.Day > 25)
-                return new Result[] { "You can only play this between 1-25th December" };
+                return ["You can only play this between 1-25th December"];
             if (startDateTime.Value.Year < 2015 || startDateTime.Value > DateTime.Today)
-                return new Result[] { "This project does not support this challenge" };
+                return ["This project does not support this challenge"];
 
             var implementedChallengeTypes = Assembly.GetExecutingAssembly()!.GetTypes()
                 .Where(t => t.GetTypeInfo().IsClass && typeof(IChallenge).IsAssignableFrom(t))
@@ -45,7 +38,7 @@ namespace Challenges
         {
             if (challenge == null) return "Challenge Not Implemented Yet";
 
-            var challengePath = Path.Combine(_environmentPath, "..\\Challenges", "Challenge", challenge.WorkingDir());
+            var challengePath = Path.Combine(environmentPath, "..\\Challenges", "Challenge", challenge.WorkingDir());
 
             var exampleInput = "";
             var exampleInput1 = "";
@@ -84,8 +77,9 @@ namespace Challenges
                         input = await reader.ReadToEndAsync();
 
             var result = await challenge.CompleteChallenge(input, exampleInput1, exampleInput2);
-
-            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), new[] { JsonConvert.SerializeObject(result, Formatting.Indented) ?? "" });
+            
+            var savedResult = new Result(result);
+            await WriteAllLinesAsync(Path.Combine(challengePath, "result.output"), [JsonConvert.SerializeObject(savedResult, Formatting.Indented) ?? ""]);
 
             return result;
         }
