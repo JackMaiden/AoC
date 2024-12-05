@@ -6,6 +6,13 @@ public class Day02 : IChallenge
     public async Task<object?> TaskPartOne(string input) => 
         input.GetLines().Select(s => s.GetIntArr().ToList()).Count(IsSafe);
 
+    private bool IsSafe(List<int> row)
+    {
+        var check = row.Zip(row.Skip(1), (a, b) => a - b).ToList();
+        return check.All(v => Math.Abs(v) <= 3) && (check.All(v => v > 0) || check.All(v => v < 0));
+    }
+    
+    
     public async Task<object?> TaskPartTwo(string input) => input.GetLines().Select(s => s.GetIntArr().ToList()).Count(IsSafeDampener);
 
     private bool IsSafeDampener(List<int> row)
@@ -24,9 +31,5 @@ public class Day02 : IChallenge
         return false;
     }
 
-    private bool IsSafe(List<int> row)
-    {
-        var check = row.Zip(row.Skip(1), (a, b) => a - b).ToList();
-        return check.All(v => Math.Abs(v) <= 3) && (check.All(v => v > 0) || check.All(v => v < 0));
-    }
+    
 }
